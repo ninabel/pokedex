@@ -1,0 +1,20 @@
+{% extends 'pokemon/base.html' %}
+
+{% block content %}
+{% for pokemon in poke_list.results %}
+    <a href="/card/{{ pokemon.name }}">{{ pokemon.name }}</a><br/>
+{% endfor %}
+<br/>
+  <div class="pagination">
+    {% if poke_list.previous  %}
+      <a href="?page={{ page|add:-1 }}">previous</a>&nbsp;|&nbsp;
+    {% endif %}
+  
+    <span>page {{ page }}</span>
+  
+    {% if poke_list.next %}
+    &nbsp;|&nbsp;<a href="?page={{ page|add:1 }}">next &raquo;</a>&nbsp;
+    {% endif %}
+  </div>
+  
+{% endblock %}

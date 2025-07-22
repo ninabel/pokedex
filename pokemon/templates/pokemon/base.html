@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PokeDex</title>
+    </head>
+    <body>
+        <div style="float:left; width:70%">
+            <h1>{{ title }}</h1>
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div style="float:right; width:30%">
+            <a href="/">HOME</a><br/>
+            {% if user.is_authenticated %}
+                <p>Welcome, <b>{{ user.username }}</b>!</p>
+                <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                {% if user.decks.count > 0 %}
+                    <h2>My decks</h2>
+                    {% for deck in user.decks.all %}
+                    <a href="/deck/{{ deck.id }}/">{{ deck.title }}</a><br/>
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+            {% endif %} 
+        </div>
+    </body>
+</html>

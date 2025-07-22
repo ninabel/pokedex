@@ -1,0 +1,12 @@
+<h2>{{ pokemon.name }}<img src="{{ pokemon.sprites.front_default }}" /></h2>
+{% for stat in pokemon.stats %}
+    {{ stat.stat.name }}: <b>{{ stat.base_stat }}</b><br/>
+{% endfor %}
+<br/>
+{% if user.is_authenticated %}
+Add to:<br/>
+    {% for deck in user.decks.all %}
+        <a href="/add/{{ pokemon.name }}/{{ deck.id }}/">{{ deck.title }}</a><br/>
+    {% endfor %}
+    <a href="/add/{{ pokemon.name }}/">new deck</a><br/>
+{% endif %}

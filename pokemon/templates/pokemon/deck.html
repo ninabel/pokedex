@@ -1,0 +1,12 @@
+{% extends 'pokemon/base.html' %}
+
+{% block content %}
+{% for pokemon in deck.cards.all %}
+    <a href="/card/{{ pokemon.name }}">{{ pokemon.name }}</a>
+    {% if deck.owner == user %}
+    <a href="/remove/{{ deck.pk }}/{{ pokemon.pk }}">X</a>
+    <br/>
+    {% endif %}
+{% endfor %}
+  
+{% endblock %}

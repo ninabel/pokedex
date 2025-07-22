@@ -1,0 +1,10 @@
+{% extends 'pokemon/base.html' %}
+{% block content %}
+{% include 'pokemon/pokemon.html' %}
+
+<form method="get" action="{% url 'compare_redirect' left_name=pokemon.name %}">
+    Compare with
+    <input type="text" name="right_name" placeholder="Enter pokemon name" required>
+    <button type="submit">Go</button>
+</form> 
+{% endblock %}

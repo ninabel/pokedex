@@ -1,0 +1,9 @@
+{% extends 'pokemon/base.html' %}
+{% block content %}
+<div style="float:left; width:50%">
+    {% include 'pokemon/pokemon.html' with pokemon=left %}
+</div>
+<div style="float:right; width:50%">
+    {% include 'pokemon/pokemon.html' with pokemon=right %}
+</div>
+{% endblock %}
