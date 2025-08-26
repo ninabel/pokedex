@@ -94,3 +94,22 @@ If you started it without --rm or in detached mode, stop it with:
 docker stop pokedex
 ```
 
+## Usage
+
+### Anonymous and regular users
+
+- Browse the main page to see the list of Pokémon.
+- Open any Pokémon to view its details and stats.
+- Use the compare page to compare two Pokémon side by side.
+
+### Admin users
+
+- Sign in at `/admin/` with a superuser account.
+- Create and manage user accounts.
+
+### Logged-in users
+
+- Add Pokémon to your personal deck from a Pokémon detail page.
+- Remove Pokémon from your deck.
+- View your decks via the sidebar under "My decks".
+- View pokemons list in your deck.
