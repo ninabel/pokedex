@@ -44,7 +44,6 @@ pip install -r requirements.txt
 ### 4. Run migrations
 ```bash
 python manage.py migrate
-Note: If the app is read-only and doesn’t use its own models, migrations may not apply.
 ```
 
 ### 5. Create admin user
@@ -57,7 +56,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Visit http://127.0.0.1:8000/ to browse Pokémon.
+Visit http://127.0.0.1:8000/ to browse Pokemons.
 
 
 ## Running with Docker
@@ -75,8 +74,8 @@ docker build -t pokedex:latest .
 ```
 docker run --name pokedex -d --rm -it -p 8000:8000 pokedex:latest
 ```
-- The app listens on 0.0.0.0:8000 in the container and is published to your host at `http://127.0.0.1:8000/`.
-- Logs will stream to your terminal; press Ctrl+C to stop.
+
+The app listens on 0.0.0.0:8000 in the container and is published to your host at `http://127.0.0.1:8000/`.
 
 ### 3. Create a superuser
 
