@@ -47,8 +47,50 @@ python manage.py migrate
 Note: If the app is read-only and doesn’t use its own models, migrations may not apply.
 ```
 
-### 5. Run the development server
+### 5. Create admin user
+```bash
+python manage.py createsuperuser
+```
+
+### 6. Run the development server
 ```bash
 python manage.py runserver
-Visit http://127.0.0.1:8000/ to browse Pokémon.
 ```
+
+Visit http://127.0.0.1:8000/ to browse Pokémon.
+
+
+## Running with Docker
+
+You can run the application using Docker for easy setup and isolation.
+
+### 1. Build the Docker image
+
+```
+docker build -t pokedex:latest .
+```
+
+### 2. Run the container (migrations run automatically, detached mode)
+
+```
+docker run --name pokedex -d --rm -it -p 8000:8000 pokedex:latest
+```
+- The app listens on 0.0.0.0:8000 in the container and is published to your host at `http://127.0.0.1:8000/`.
+- Logs will stream to your terminal; press Ctrl+C to stop.
+
+### 3. Create a superuser
+
+While container is running, execute the command:
+
+```
+docker exec -it pokedex python manage.py createsuperuser
+```
+
+### 4. Stop the app
+
+If you started it without --rm or in detached mode, stop it with:
+
+```
+docker stop pokedex
+```
+
