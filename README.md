@@ -111,4 +111,4 @@ docker stop pokedex
 - Add Pokémon to your personal deck from a Pokémon detail page.
 - Remove Pokémon from your deck.
 - View your decks via the sidebar under "My decks".
-- View pokemons list in your deck.
+- View Pokémons list in your deck.
