@@ -14,7 +14,11 @@
             <a href="/">HOME</a><br/>
             {% if user.is_authenticated %}
                 <p>Welcome, <b>{{ user.username }}</b>!</p>
-                <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}"/>
+                    <button type="submit">Logout</button>
+                </form>
                 {% if user.decks.count > 0 %}
                     <h2>My decks</h2>
                     {% for deck in user.decks.all %}

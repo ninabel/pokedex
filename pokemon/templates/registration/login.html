@@ -1,0 +1,18 @@
+{% extends "pokemon/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
+{% if form.errors %}
+<p>Invalid username or password. Please try again.</p>
+{% endif %}
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Log in</button>
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+{% endblock %}
+
+

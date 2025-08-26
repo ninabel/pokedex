@@ -1,0 +1,10 @@
+{% extends "pokemon/base.html" %}
+
+{% block title %}Logged out{% endblock %}
+
+{% block content %}
+<h1>You have been logged out.</h1>
+<p><a href="{% url 'login' %}">Log in again</a></p>
+{% endblock %}
+
+

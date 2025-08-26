@@ -151,3 +151,6 @@ LOGGING = {
         },
     },
 }
+
+# Redirect to homepage after successful login
+LOGIN_REDIRECT_URL = '/'
