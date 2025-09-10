@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
+from django.core.exceptions import PermissionDenied
 from pokemon.models import Deck, Card
 
 import requests
@@ -74,7 +75,7 @@ def add(request, card: str, deck_id: int = 0):
     else:
         deck = get_object_or_404(Deck, pk=deck_id)
     if deck.owner != request.user:
-        raise Http404("You can not edit this deck.")
+        raise PermissionDenied("You can not edit this deck.")
     card = Card.objects.create(name=card, deck=deck)
     return redirect("deck", id=deck.pk)
 
@@ -82,6 +83,8 @@ def add(request, card: str, deck_id: int = 0):
 def deck(request, id: int):
     # show deck, only for its owner
     deck = get_object_or_404(Deck, pk=id)
+    if deck.owner != request.user:
+        raise PermissionDenied("You can not see this deck.")
     return render(request, 'pokemon/deck.html',
                   {"deck": deck, "title": deck.title})
 
@@ -90,7 +93,7 @@ def remove(request, deck_id: int, card_id: int):
     # remove card from deck
     deck = get_object_or_404(Deck, pk=deck_id)
     if deck.owner != request.user:
-        raise Http404("You can not edit this deck.")
+        raise PermissionDenied("You can not edit this deck.")
     try:
         deck.cards.get(pk=card_id).delete()
     except Http404:
