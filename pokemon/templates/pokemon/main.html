@@ -2,7 +2,7 @@
 
 {% block content %}
 {% for pokemon in poke_list.results %}
-    <a href="/card/{{ pokemon.name }}">{{ pokemon.name }}</a><br/>
+    <a href="/card/{{ pokemon.name }}/">{{ pokemon.name }}</a><br/>
 {% endfor %}
 <br/>
   <div class="pagination">
